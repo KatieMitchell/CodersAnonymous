@@ -8,6 +8,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using crashCourse;
+using 
 
 namespace crashCourse
 {
@@ -29,6 +30,23 @@ namespace crashCourse
             int chosenCard = rnd.Next(1, 6);
             return chosenCard;
         }
-   
+
+        private void SetStartScreen()
+        {
+            if (InvokeRequired)
+            {
+                BeginInvoke(new MethodInvoker(SetStartScreen));
+                return;
+            }
+            loadingPic.Show();
+        }
+
+        private void loadingPic_Click(object sender, EventArgs e)
+        {
+            loadingPic.Hide();
+
+        }
+
+        private void RenderGame()
     }
 }

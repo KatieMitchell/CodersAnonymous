@@ -35,8 +35,9 @@
             this.card3 = new System.Windows.Forms.PictureBox();
             this.card2 = new System.Windows.Forms.PictureBox();
             this.card1 = new System.Windows.Forms.PictureBox();
-            this.panel3 = new System.Windows.Forms.Panel();
-            this.panel1 = new System.Windows.Forms.Panel();
+            this.livesPanel = new System.Windows.Forms.Panel();
+            this.questionPanel = new System.Windows.Forms.Panel();
+            this.loadingPic = new System.Windows.Forms.PictureBox();
             this.gameArea.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.card6)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.card5)).BeginInit();
@@ -44,7 +45,8 @@
             ((System.ComponentModel.ISupportInitialize)(this.card3)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.card2)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.card1)).BeginInit();
-            this.panel1.SuspendLayout();
+            this.questionPanel.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.loadingPic)).BeginInit();
             this.SuspendLayout();
             // 
             // gameArea
@@ -63,7 +65,7 @@
             // 
             // card6
             // 
-            this.card6.Location = new System.Drawing.Point(300, 50);
+            this.card6.Location = new System.Drawing.Point(300, 250);
             this.card6.Name = "card6";
             this.card6.Size = new System.Drawing.Size(200, 100);
             this.card6.TabIndex = 6;
@@ -71,7 +73,7 @@
             // 
             // card5
             // 
-            this.card5.Location = new System.Drawing.Point(199, 274);
+            this.card5.Location = new System.Drawing.Point(50, 250);
             this.card5.Name = "card5";
             this.card5.Size = new System.Drawing.Size(200, 100);
             this.card5.TabIndex = 4;
@@ -79,7 +81,7 @@
             // 
             // card4
             // 
-            this.card4.Location = new System.Drawing.Point(191, 266);
+            this.card4.Location = new System.Drawing.Point(300, 150);
             this.card4.Name = "card4";
             this.card4.Size = new System.Drawing.Size(200, 100);
             this.card4.TabIndex = 3;
@@ -87,7 +89,7 @@
             // 
             // card3
             // 
-            this.card3.Location = new System.Drawing.Point(183, 258);
+            this.card3.Location = new System.Drawing.Point(50, 150);
             this.card3.Name = "card3";
             this.card3.Size = new System.Drawing.Size(200, 100);
             this.card3.TabIndex = 2;
@@ -95,7 +97,7 @@
             // 
             // card2
             // 
-            this.card2.Location = new System.Drawing.Point(175, 250);
+            this.card2.Location = new System.Drawing.Point(300, 50);
             this.card2.Name = "card2";
             this.card2.Size = new System.Drawing.Size(200, 100);
             this.card2.TabIndex = 1;
@@ -109,31 +111,41 @@
             this.card1.TabIndex = 0;
             this.card1.TabStop = false;
             // 
-            // panel3
+            // livesPanel
             // 
-            this.panel3.BackColor = System.Drawing.Color.Transparent;
-            this.panel3.Dock = System.Windows.Forms.DockStyle.Bottom;
-            this.panel3.Location = new System.Drawing.Point(0, 600);
-            this.panel3.Name = "panel3";
-            this.panel3.Size = new System.Drawing.Size(550, 100);
-            this.panel3.TabIndex = 2;
+            this.livesPanel.BackColor = System.Drawing.Color.Transparent;
+            this.livesPanel.Dock = System.Windows.Forms.DockStyle.Bottom;
+            this.livesPanel.Location = new System.Drawing.Point(0, 600);
+            this.livesPanel.Name = "livesPanel";
+            this.livesPanel.Size = new System.Drawing.Size(550, 100);
+            this.livesPanel.TabIndex = 2;
             // 
-            // panel1
+            // questionPanel
             // 
-            this.panel1.Controls.Add(this.gameArea);
-            this.panel1.Dock = System.Windows.Forms.DockStyle.Top;
-            this.panel1.Location = new System.Drawing.Point(0, 0);
-            this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(550, 100);
-            this.panel1.TabIndex = 0;
+            this.questionPanel.Controls.Add(this.gameArea);
+            this.questionPanel.Dock = System.Windows.Forms.DockStyle.Top;
+            this.questionPanel.Location = new System.Drawing.Point(0, 0);
+            this.questionPanel.Name = "questionPanel";
+            this.questionPanel.Size = new System.Drawing.Size(550, 100);
+            this.questionPanel.TabIndex = 0;
+            // 
+            // loadingPic
+            // 
+            this.loadingPic.Location = new System.Drawing.Point(0, 0);
+            this.loadingPic.Name = "loadingPic";
+            this.loadingPic.Size = new System.Drawing.Size(550, 700);
+            this.loadingPic.TabIndex = 3;
+            this.loadingPic.TabStop = false;
+            this.loadingPic.Click += new System.EventHandler(this.loadingPic_Click);
             // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(550, 700);
-            this.Controls.Add(this.panel3);
-            this.Controls.Add(this.panel1);
+            this.Controls.Add(this.loadingPic);
+            this.Controls.Add(this.livesPanel);
+            this.Controls.Add(this.questionPanel);
             this.Name = "Form1";
             this.Text = "Form1";
             this.Load += new System.EventHandler(this.Form1_Load);
@@ -144,21 +156,23 @@
             ((System.ComponentModel.ISupportInitialize)(this.card3)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.card2)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.card1)).EndInit();
-            this.panel1.ResumeLayout(false);
+            this.questionPanel.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.loadingPic)).EndInit();
             this.ResumeLayout(false);
 
         }
 
         #endregion
         private System.Windows.Forms.Panel gameArea;
-        private System.Windows.Forms.Panel panel3;
+        private System.Windows.Forms.Panel livesPanel;
         private System.Windows.Forms.PictureBox card6;
         private System.Windows.Forms.PictureBox card5;
         private System.Windows.Forms.PictureBox card4;
         private System.Windows.Forms.PictureBox card3;
         private System.Windows.Forms.PictureBox card2;
         private System.Windows.Forms.PictureBox card1;
-        private System.Windows.Forms.Panel panel1;
+        private System.Windows.Forms.Panel questionPanel;
+        private System.Windows.Forms.PictureBox loadingPic;
     }
 }
 
