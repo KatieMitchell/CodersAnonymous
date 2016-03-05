@@ -8,7 +8,7 @@ namespace crashCourse
 {
     public class Question
     {
-        private static readonly List<Question> _all = new List<Question>();
+        public static readonly List<Question> _all = new List<Question>();
 
         public static readonly Question One = new Question("Question 1", "Answer1");
         public static readonly Question Two = new Question("Question 2", "Answer1");

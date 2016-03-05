@@ -20,33 +20,20 @@ namespace crashCourse
 
         private void Form1_Load(object sender, EventArgs e)
         {
-
-        }
-
-        private int CardGen()
-        {
-            Random rnd = new Random();
-            int chosenCard = rnd.Next(1, 6);
-            return chosenCard;
-        }
-
-        private void SetStartScreen()
-        {
-            if (InvokeRequired)
-            {
-                BeginInvoke(new MethodInvoker(SetStartScreen));
-                return;
-            }
+            hideAllText();
             loadingPic.Show();
         }
 
+        
         private void loadingPic_Click(object sender, EventArgs e)
         {
+            ShowAllText();
+            startNewGame();
             loadingPic.Hide();
 
         }
 
-        private void RenderGame()
+        public void RenderGame()
         {
             if (InvokeRequired)
             {
@@ -54,8 +41,8 @@ namespace crashCourse
                 return;
                 //Game game = _currentgame;
                 //if (game == null) return;
-                
-      
+
+
             }
         }
 
@@ -79,10 +66,10 @@ namespace crashCourse
             animationTimer.Enabled = true;
             //* Start the animation timer.
         }
-        private void resetLifes()
-        {
+        //  private void resetLifes()
+        //  {
 
-        }
+        //  }
 
         private void animationTimer_Tick(object sender, EventArgs e)
         {
@@ -110,9 +97,96 @@ namespace crashCourse
                 pBoxCar.Location = new Point(0, pBoxCar.Location.Y);
             }
         }
+
+        struct singleCard
+        {
+            public int position;
+            public string text;
+        }
+
+        public int currentScore = 0;
+        public int roundTime;
+        singleCard[] card = new singleCard[5];
+
+
+        private void startNewGame()
+        {
+            currentScore = 0;
+            myLives = 3;
+            newRound();
+            
+        }
+
+        private void hideAllText()
+        {
+            label1.Hide();
+            label2.Hide();
+            label3.Hide();
+            label4.Hide();
+            label5.Hide();
+            label6.Hide();
+            Pic1.Show();
+            Pic2.Show();
+            Pic3.Show();
+            Pic4.Show();
+            Pic5.Show();
+            Pic6.Show();
+        }
+        private void ShowAllText()
+        {
+            Pic1.Hide();
+            Pic2.Hide();
+            Pic3.Hide();
+            Pic4.Hide();
+            Pic5.Hide();
+            Pic6.Hide();
+            label1.Show();
+            label2.Show();
+            label3.Show();
+            label4.Show();
+            label5.Show();
+            label6.Show();
+        }
+
+        private void flippingCard()
+        {
+            Pic1.Image = Properties.Resources.card;
+            Pic2.Image = Properties.Resources.card;
+            Pic3.Image = Properties.Resources.card;
+            Pic4.Image = Properties.Resources.card;
+            Pic5.Image = Properties.Resources.card;
+            Pic6.Image = Properties.Resources.card;
+        }
+
+        private void newRound()
+        {
+            roundTime = 0;
+            roundTimer.Enabled = true;
+            //hideAllText();
+            //flippingCard();
+            //ShowAllText();
+        }
+
+        private void answerBox_Click(object sender, EventArgs e)
+        {
+            PictureBox clickBox = (PictureBox)sender;
+            string positionNum = clickBox.Name.Substring(clickBox.Name.Length - 1, 1);
+            Label showLabel = this.Controls.Find("label" + positionNum, true).FirstOrDefault() as Label;
+            showLabel.Show();
+        }
+
+        public void roundTimer_Tick(object sender, EventArgs e)
+        {
+            MessageBox.Show("timer");
+            roundTime = roundTime + 1;
+            if (roundTime == 1)
+            {
+                hideAllText();
+            }
+        }
+
     }
-    ᐧ
 }
 
     
-}
+
