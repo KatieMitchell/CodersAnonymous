@@ -24,7 +24,7 @@ namespace crashCourse
             loadingPic.Show();
         }
 
-        
+
         private void loadingPic_Click(object sender, EventArgs e)
         {
             ShowAllText();
@@ -105,7 +105,8 @@ namespace crashCourse
         }
 
         public int currentScore = 0;
-        public int roundTime;
+        public int round
+            Time;
         singleCard[] card = new singleCard[5];
 
 
@@ -114,7 +115,7 @@ namespace crashCourse
             currentScore = 0;
             myLives = 3;
             newRound();
-            
+
         }
 
         private void hideAllText()
@@ -162,9 +163,9 @@ namespace crashCourse
         {
             roundTime = 0;
             roundTimer.Enabled = true;
-            //hideAllText();
-            //flippingCard();
-            //ShowAllText();
+            hideAllText();
+            flippingCard();
+            ShowAllText();
         }
 
         private void answerBox_Click(object sender, EventArgs e)
@@ -177,10 +178,10 @@ namespace crashCourse
 
         public void roundTimer_Tick(object sender, EventArgs e)
         {
-            MessageBox.Show("timer");
             roundTime = roundTime + 1;
-            if (roundTime == 1)
+            if (roundTime == 15)
             {
+                roundTimer.Stop();
                 hideAllText();
             }
         }
@@ -188,5 +189,5 @@ namespace crashCourse
     }
 }
 
-    
+
 
