@@ -6,7 +6,9 @@ using System.Threading.Tasks;
 
 namespace crashCourse
 {
-    class Game
+    public class Game
     {
+        `
+
     }
 }
